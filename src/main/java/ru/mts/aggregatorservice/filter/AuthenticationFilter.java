@@ -20,6 +20,13 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         this.jwtUtil = jwtUtil;
     }
 
+    /**
+     * Применяет фильтрацию аутентификации к запросам, проходящим через Spring Cloud Gateway.
+     * Проверяет наличие и валидность JWT токена в заголовках запроса.
+     *
+     * @param config Конфигурационный объект, используемый для настройки поведения фильтра.
+     * @return {@link GatewayFilter} для дальнейшей обработки запроса.
+     */
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
@@ -47,6 +54,10 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
         });
     }
 
+    /**
+     * Внутренний статический класс {@code Config} используется для конфигурации фильтра.
+     * Не содержит дополнительных полей или методов.
+     */
     public static class Config {
     }
 }

@@ -19,6 +19,11 @@ public class JwtUtil {
         this.SECRET_KEY = secretKey;
     }
 
+    /**
+     * Проверяет валидность JWT токена: если токен недействителен, выбрасывается исключение
+     *
+     * @param token токен для проверки
+     */
     public void validateToken(final String token) {
         Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
     }

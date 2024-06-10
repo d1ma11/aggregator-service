@@ -12,6 +12,13 @@ import ru.mts.aggregatorservice.model.ExceptionResponse;
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * Обрабатывает исключения типа CustomException путем преобразования исключения
+     * в соответствующий ответ с HTTP статусом BAD_REQUEST
+     *
+     * @param e исключение, которое необходимо обработать
+     * @return ResponseEntity с информацией об ошибке и статусом BAD_REQUEST
+     */
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<ExceptionResponse<ExceptionData>> handleException(CustomException e) {
         ExceptionResponse<ExceptionData> exceptionResponse =
