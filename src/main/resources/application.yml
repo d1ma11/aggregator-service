@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: aggregator-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: deposit-service
+          uri: lb://DEPOSIT-SERVICE
+          predicates:
+            - Path=/deposit/**
+          filters:
+            - AuthenticationFilter
+
+        - id: account-service
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/account/**
+          filters:
+            - AuthenticationFilter
+
+        - id: customer-service
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/customer/**
+
+  security:
+    secret:
+      key: ace8e983d9025773cf41d743c28d28b1aa1e4c7c3514575fb664425b26b2d7fd
+
+server:
+  port: 8084
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}
