@@ -21,7 +21,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     }
 
     /**
-     * Применяет фильтрацию аутентификации к запросам, проходящим через Spring Cloud Gateway.
+     * Применяет фильтрацию аутентификации к запросам, проходящим через Aggregator Service (Spring Cloud Gateway).
      * Проверяет наличие и валидность JWT токена в заголовках запроса.
      *
      * @param config Конфигурационный объект, используемый для настройки поведения фильтра.
